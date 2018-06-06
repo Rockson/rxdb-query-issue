@@ -1,5 +1,7 @@
+import { IRxGroupDocumentType } from './../rxdb/Group';
 import { DatabaseService } from './../rxdb/rxdb.service';
 import { Component, OnInit } from "@angular/core";
+import { RxQueryObject } from 'rxdb';
 
 @Component({
   selector: "app-root",
@@ -13,7 +15,7 @@ export class AppComponent implements OnInit {
 
   async ngOnInit() {
     const db = await this.dbService.get()
-    db.group!.find().where({title: "My Title"}) // ??
+    db.group!.find().where({title: "My Title"} as RxQueryObject<IRxGroupDocumentType>)
   }
   
 }
